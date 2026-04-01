@@ -6,4 +6,25 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="ReadyM.Api">
+        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.dll</HintPath>
+      </Reference>
+      <Reference Include="ReadyM.Api.Multiplayer">
+        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.Multiplayer.dll</HintPath>
+      </Reference>
+      <Reference Include="ReadyM.Relay.Client">
+        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Relay.Client.dll</HintPath>
+      </Reference>
+      <Reference Include="ReadyM.Wukong.Common">
+        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Wukong.Common.dll</HintPath>
+      </Reference>
+      <Reference Include="WukongMp.Api">
+        <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Api.dll</HintPath>
+      </Reference>
+      <Reference Include="WukongMp.Sdk">
+        <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Sdk.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

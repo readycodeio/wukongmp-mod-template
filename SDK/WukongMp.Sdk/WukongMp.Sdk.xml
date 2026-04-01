@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WukongMp.Sdk</name>
+    </assembly>
+    <members>
+        <member name="T:WukongMp.Sdk.Api.Implementation.WukongConsoleApi">
+            API for the in-game console (F1).
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongConsoleApi.#ctor(WukongMp.Api.Command.WukongCommandConsole,ReadyM.Api.Command.ConsoleCommandRegistry)">
+            API for the in-game console (F1).
+        </member>
+        <member name="T:WukongMp.Sdk.Api.Implementation.WukongFileApi">
+            API for referencing files related to a mod, such as save files.
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongFileApi.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            API for referencing files related to a mod, such as save files.
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongInputApi.CanApplyInput">
+            <returns><c>true</c> if keyboard input is not blocked by active text fields and menus.</returns>
+        </member>
+        <member name="P:WukongMp.Sdk.Api.Implementation.WukongLocalApi.IsGameplayLevel">
+            Is the game currently in a gameplay level, as opposed to a menu or the like.
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongLocalApi.ShowInfoMessage(System.String)">
+            Shows a message on the player's screen, that persists until HideInfoMessage is called.
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongLocalApi.ShowInfoMessage(System.String,System.Single)">
+            Shows a message on the player's screen.
+            The message will automatically disappear after the given timeout.
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongLocalApi.Wait(System.Threading.Tasks.Task)">
+            Waits for the given task to complete in a synchronous manner.
+        </member>
+        <member name="T:WukongMp.Sdk.Api.Implementation.WukongSynchronizationApi">
+            API for networked gameplay features.
+        </member>
+        <member name="M:WukongMp.Sdk.Api.Implementation.WukongSynchronizationApi.#ctor(ReadyM.Api.ECS.Worlds.Store,ReadyM.Relay.Client.State.ClientState,WukongMp.Api.State.WukongAreaState,WukongMp.Api.State.WukongPlayerState,WukongMp.Api.Mapping.WukongMappingPolicyDirectory,ReadyM.Api.Multiplayer.Mapping.Events.IMappedEventManager,ReadyM.Api.Multiplayer.Client.IRelayClient)">
+            API for networked gameplay features.
+        </member>
+        <member name="T:WukongMp.Sdk.Api.IWukongEventApi">
+            <summary>
+            Provides events related to gameplay, player actions, and multiplayer interactions in Wukong Multiplayer.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnBeginPlayGameplayLevel">
+            <summary>
+            Fired when the player enters a gameplay level.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnEndPlayGameplayLevel">
+            <summary>
+            Fired when the player leaves a gameplay level, either by exiting to the main menu or by loading another level.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnLoadingScreenClose">
+            <summary>
+            Fired when the loading screen is closed after loading a gameplay level.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnLevelLoaded">
+            <summary>
+            Fired when a gameplay level is loaded, but before the loading screen is closed.
+            This is a good event to use for initializing custom widgets, so that they are ready to be shown as soon as the loading screen is closed.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnExitLevel">
+            <summary>
+            Fired when the player exits a level, either by exiting to the main menu or by loading another level.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnJoinedArea">
+            <summary>
+            Fired when the player enters an area.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnLeftArea">
+            <summary>
+            Fired when the player leaves an area.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnPlayerPawnSpawned">
+            <summary>
+            Fired when the player's pawn (the in-game character they control) is spawned.
+            This can happen when you enter a new area, or when another player connects to the game and their pawn is spawned for you.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnMainCharacterEntityInitialized">
+            <summary>
+            Fired when the player's main character ECS entity is initialized and ready.
+            This is fired before <see cref="E:WukongMp.Sdk.Api.IWukongEventApi.OnPlayerPawnSpawned"/>, so it can be used to set up things that need to be ready before the pawn is spawned.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnPlayerChangedTeam">
+            <summary>
+            Fired when the player changes team, either by rebirthing or by joining a game in progress.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnLocalPlayerBeforeRebirth">
+            <summary>
+            Fired when the local player's character is about to rebirth.
+            This is fired before the rebirth actually happens, so the player's character will still be dead at this point.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnOtherPlayerInsideArea">
+            <summary>
+            Fired when another player enters the same area as the local player.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnOtherPlayerOutsideArea">
+            <summary>
+            Fired when another player leaves the area that the local player is in.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnConnected">
+            <summary>
+            Fired when any player connects to the server.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnDisconnected">
+            <summary>
+            Fired when any player disconnects from the server, either voluntarily or involuntarily.
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnPlayerDead">
+            <summary>
+            Fired when any player dies.
+            The first parameter is the player character that died, and the second parameter is the entity that killed them (if applicable).
+            </summary>
+        </member>
+        <member name="E:WukongMp.Sdk.Api.IWukongEventApi.OnMonsterDead">
+            <summary>
+            Fired when any monster dies.
+            The first parameter is the monster that died, and the second parameter is the entity that killed it (if applicable).
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.Api.IWukongInputApi.CanApplyInput">
+            <returns><c>true</c> if keyboard input is not blocked by active text fields and menus.</returns>
+        </member>
+        <member name="P:WukongMp.Sdk.Api.IWukongLocalApi.IsGameplayLevel">
+            <summary>
+            Is the game currently in a gameplay level, as opposed to a menu or the like?
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.Api.IWukongLocalApi.ShowInfoMessage(System.String)">
+            <summary>
+            Shows a message on the player's screen.
+            </summary>
+            <param name="message">The message to show.</param>
+        </member>
+        <member name="M:WukongMp.Sdk.Api.IWukongLocalApi.ShowInfoMessage(System.String,System.Single)">
+            <summary>
+            Shows a message on the player's screen for a certain amount of time.
+            </summary>
+            <param name="message">The message to show.</param>
+            <param name="timeoutSeconds">The amount of time, in seconds, to show the message for.</param>
+        </member>
+        <member name="M:WukongMp.Sdk.Api.IWukongLocalApi.HideInfoMessage">
+            <summary>
+            Hides the message currently being shown on the player's screen, if any.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.Api.IWukongLocalApi.AddChatMessage(System.String,UnrealEngine.Runtime.FLinearColor)">
+            <summary>
+            Adds a message to the in-game chat, visible only to the local player.
+            </summary>
+            <param name="message">The message to add to the chat.</param>
+            <param name="color">The color of the message in the chat.</param>
+        </member>
+        <member name="M:WukongMp.Sdk.Api.IWukongLocalApi.Wait(System.Threading.Tasks.Task)">
+            <summary>
+            Waits for the given task to complete in a synchronous manner.
+            </summary>
+            <param name="task">The task to wait for.</param>
+        </member>
+        <member name="T:WukongMp.Sdk.Api.WukongApi">
+            <summary>
+            The main entry point for accessing Wukong's API.
+            Provides access to all of the various APIs and services that WukongMP offers.
+            </summary>
+        </member>
+        <member name="T:WukongMp.Sdk.Entities.ReadyActor">
+            A ReadyActor is an entity that has a mapped Pawn.
+        </member>
+        <member name="M:WukongMp.Sdk.Entities.ReadyObjectExtensions.get_Owner``1(``0)">
+            <inheritdoc cref="P:WukongMp.Sdk.Entities.ReadyObjectExtensions.&lt;G&gt;$6195CECABC7C3BD151705E592B8D91C0`1.Owner"/>
+        </member>
+        <member name="P:WukongMp.Sdk.Entities.ReadyObjectExtensions.&lt;G&gt;$6195CECABC7C3BD151705E592B8D91C0`1.Owner">
+            <summary>
+            Gets the owner of the entity. This is usually the player that spawned the entity, or a player that was handled the ownership after the original owner disconnected.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:WukongMp.Sdk.IReadyConvertable`2">
+            <exclude />
+        </member>
+        <member name="T:WukongMp.Sdk.ModSystemBase">
+            Base class for plugin systems. Adds itself to the update loop on creation and removes itself on disposal.
+        </member>
+        <member name="F:WukongMp.Sdk.ModSystemBase.UpdateTick.deltaTime">
+            <summary> The time in seconds since the last tick. </summary>
+        </member>
+        <member name="F:WukongMp.Sdk.ModSystemBase.UpdateTick.time">
+            <summary> The time at the beginning of the current frame since application start. </summary>
+        </member>
+    </members>
+</doc>
