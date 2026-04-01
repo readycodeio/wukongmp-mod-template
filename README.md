@@ -10,12 +10,15 @@ Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed in
 2. Open the solution in your preferred C# IDE (e.g., JetBrains Rider, Visual Studio).
 3. Build the solution to ensure that all dependencies are correctly resolved.
 4. Start developing your mod by modifying the `Main.cs` file and adding your own code.
+5. Reference any of the DLLs in `SDK`, `Core`, or `Game` as needed for your mod's functionality.
 
 ## Repository structure
 
 - `ExampleMod/Mod.cs`: The main entry point for your mod where you can initialize and set up your mod's functionality.
-- `SDK/WukongMp.Sdk`: Contains the WukongMP SDK files that you can reference in your mod development. The same files are present in the server binary package.
-- `SDK/Overrides`: Contains versions of DLLs present in the base **Black Myth: Wukong** game, but the SDK overrides them to different versions to ensure compatibility with the modding framework. These files are also present in the server binary package.
+- `SDK/WukongMp.Sdk`: WukongMP SDK files that you can reference in your mod development. The same files are present in the server binary package.
+- `SDK/Overrides`: Versions of DLLs present in the base **Black Myth: Wukong** game, which the SDK overrides to ensure compatibility with the modding framework. These files are also present in the server binary package.
+- `Core`: Our fork of the Harmony library, which is used for patching game code.
+- `Game`: Contains the game's original DLLs extracted from the base game.
 
 ## Packaging the mod
 
