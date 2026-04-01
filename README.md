@@ -1,5 +1,7 @@
 # WukongMP Mod Template
 
+:cn: [中文版](README.zh-Hans.md)
+
 A template project for developing a mod using the WukongMP SDK.
 
 Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed information on how to use the SDK and create your mod.
