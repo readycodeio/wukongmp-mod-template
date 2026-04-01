@@ -1,6 +1,6 @@
 # WukongMP 模组模板
 
-:gb: [English version](README.md)。
+<img src="https://flagcdn.com/gb.svg" width="18" alt="English"/> [English version](README.md)。
 
 一个用于使用 WukongMP SDK 开发模组的模板项目。
 

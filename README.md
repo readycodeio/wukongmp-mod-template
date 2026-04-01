@@ -1,6 +1,6 @@
 # WukongMP Mod Template
 
-:cn: [中文版](README.zh-Hans.md)
+<img src="https://flagcdn.com/cn.svg" width="18" alt="Chinese"/> [中文版](README.zh-Hans.md)
 
 A template project for developing a mod using the WukongMP SDK.
 
