@@ -7,34 +7,44 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="0Harmony">
-        <HintPath>..\Core\0Harmony.dll</HintPath>
-      </Reference>
-      <Reference Include="PreludeLib">
-        <HintPath>..\Core\PreludeLib.dll</HintPath>
-      </Reference>
-      <Reference Include="ReadyM.Api">
-        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.dll</HintPath>
-      </Reference>
-      <Reference Include="ReadyM.Api.Multiplayer">
-        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.Multiplayer.dll</HintPath>
-      </Reference>
-      <Reference Include="ReadyM.Relay.Client">
-        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Relay.Client.dll</HintPath>
-      </Reference>
-      <Reference Include="ReadyM.Wukong.Common">
-        <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Wukong.Common.dll</HintPath>
-      </Reference>
-      <Reference Include="WukongMp.Api">
-        <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Api.dll</HintPath>
-      </Reference>
-      <Reference Include="WukongMp.Sdk">
-        <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Sdk.dll</HintPath>
-      </Reference>
+        <Reference Include="0Harmony">
+            <HintPath>..\Core\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="LiteNetLib">
+          <HintPath>..\SDK\Overrides\LiteNetLib.dll</HintPath>
+        </Reference>
+        <Reference Include="PreludeLib">
+            <HintPath>..\Core\PreludeLib.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Api">
+            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.dll</HintPath>
+        </Reference>
+        <Analyzer Include="..\SDK\WukongMp.Sdk\ReadyM.Api.Generators.dll" />
+        <Reference Include="ReadyM.Api.Multiplayer">
+            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.Multiplayer.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Relay.Client">
+            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Relay.Client.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Wukong.Common">
+            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Wukong.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="UnrealEngine">
+            <HintPath>..\Game\UnrealEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnrealEngine.Runtime">
+            <HintPath>..\Game\UnrealEngine.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="WukongMp.Api">
+            <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Api.dll</HintPath>
+        </Reference>
+        <Reference Include="WukongMp.Sdk">
+            <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Sdk.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5"/>
     </ItemGroup>
 
 </Project>
