@@ -165,6 +165,12 @@
             Send an event with a specific delivery method. This overload does not support event caching.
             </summary>
         </member>
+        <member name="T:ReadyM.Api.Multiplayer.ECS.Components.INetworkedComponent">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.ECS.Managers.IPlayerIdProvider">
+            <exclude />
+        </member>
         <member name="M:ReadyM.Api.Multiplayer.ECS.Systems.SendComponentDeltaSystemBase`1.GetMaxPacketSize">
             <returns>null if unbound, otherwise the max packet size in bytes</returns>
         </member>
@@ -176,7 +182,66 @@
         <member name="T:ReadyM.Api.Multiplayer.ECS.Tags.DisallowOwnershipTransferTag">
             <exclude />
         </member>
+        <member name="M:ReadyM.Api.Multiplayer.ECS.Values.NetworkId.TextDeserialize(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.ECS.Values.NetworkId.TextSerialize(System.Text.Json.Utf8JsonWriter,ReadyM.Api.Multiplayer.ECS.Values.NetworkId,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
         <member name="T:ReadyM.Api.Multiplayer.Extensions.SerializationExtensions">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Generators.DeriveINetSerializableAttribute">
+            <summary>
+            Decorate a struct with this attribute to make it available for use as an RPC parameter.
+            </summary>
+            <param name="mode">Determines which members of the struct are serialized. See <see cref="T:ReadyM.Api.Serialization.SerializableMode"/> for details.</param>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Generators.DeriveINetSerializableAttribute.#ctor(ReadyM.Api.Serialization.SerializableMode)">
+            <summary>
+            Decorate a struct with this attribute to make it available for use as an RPC parameter.
+            </summary>
+            <param name="mode">Determines which members of the struct are serialized. See <see cref="T:ReadyM.Api.Serialization.SerializableMode"/> for details.</param>
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Generators.DeriveINetworkedComponentAttribute">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Generators.DeriveINetworkedComponentAttribute.#ctor(ReadyM.Api.Serialization.SerializableMode)">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Generators.ExcludeSerializableAttribute">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Generators.IncludeSerializableAttribute">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Generators.RpcEventAttribute">
+            <summary>
+            Marks a method as an RPC event handler.
+            Use this in partial classes extending from <see cref="T:ReadyM.Api.Multiplayer.RPC.RpcClassBase"/>.
+            </summary>
+            <param name="relayMode">Determines how the event is relayed to other clients.</param>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Generators.RpcEventAttribute.#ctor(ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode)">
+            <summary>
+            Marks a method as an RPC event handler.
+            Use this in partial classes extending from <see cref="T:ReadyM.Api.Multiplayer.RPC.RpcClassBase"/>.
+            </summary>
+            <param name="relayMode">Determines how the event is relayed to other clients.</param>
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Data.Field`2">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Mapping.Data.Field`2.#ctor(System.Int32,System.Func{`0,`1},ReadyM.Api.Multiplayer.Mapping.Data.FieldSetterDelegate{`0,`1},ReadyM.Api.Multiplayer.Mapping.Data.FieldSetterDelegate{`0,`1},System.Func{`0,System.Boolean})">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Data.Field`3">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Mapping.Data.Field`3.#ctor(System.Int32,System.Func{`0,`1},ReadyM.Api.Multiplayer.Mapping.Data.FieldSetterDelegate{`0,`1},System.Func{`0,System.Boolean})">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Data.FieldSetterDelegate`2">
             <exclude />
         </member>
         <member name="M:ReadyM.Api.Multiplayer.Mapping.Events.IMappedEventManager.InvokeInGameAndNotifyEcs``2(``0@,``1)">
@@ -245,6 +310,27 @@
             Returns whether the game is allowed to run the game code related to the event locally, or not.
             This is used exclusively in game code patches, to avoid running events for entities we are not responsible for.
         </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.EmptyContext">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.IAlwaysPropagates">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.IAlwaysPropagatesToEcsOnly">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.IAlwaysPropagatesToGameOnly">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.IMappingContext`1">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.IOwnershipManaged">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Mapping.Tags.IReadyComponent">
+            <exclude />
+        </member>
         <member name="T:ReadyM.Api.Multiplayer.Protocol.CustomRelayEventHeader">
             <summary>
             Spans 4 bytes in standard relay modes and (6 + 2 * peers) in peer-targeted relay mode.
@@ -265,6 +351,55 @@
             - peers * 2 bytes for peers
             </summary>
         </member>
+        <member name="M:ReadyM.Api.Multiplayer.Protocol.CustomRelayEventHeader.TextDeserialize(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Protocol.CustomRelayEventHeader.TextSerialize(System.Text.Json.Utf8JsonWriter,ReadyM.Api.Multiplayer.Protocol.CustomRelayEventHeader,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMessageCode">
+            <summary>
+            A unique identifier of a single RPC message type.
+            </summary>
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode">
+            <summary>
+            Indicates how an RPC message should be relayed to other players in the game.
+            </summary>
+        </member>
+        <member name="F:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode.AreaOfInterestOthers">
+            <summary>
+            Sends the message to all players in the area of interest of the sender, other than the sender.
+            </summary>
+        </member>
+        <member name="F:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode.AreaOfInterestAll">
+            <summary>
+            Sends the message to all players in the area of interest of the sender, including the sender.
+            </summary>
+        </member>
+        <member name="F:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode.GlobalOthers">
+            <summary>
+            Sends the message to all players in the game, other than the sender.
+            </summary>
+        </member>
+        <member name="F:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode.GlobalAll">
+            <summary>
+            Sends the message to all players in the game, including the sender.
+            </summary>
+        </member>
+        <member name="F:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode.EntityOwner">
+            <summary>
+            Sends the message to the owner of an entity, possibly back to the sender.
+            </summary>
+            <remarks>
+            Not part of stable API.
+            </remarks>
+        </member>
+        <member name="F:ReadyM.Api.Multiplayer.Protocol.Enums.RelayMode.Peers">
+            <summary>
+            Sends the message to a specific list of players.
+            </summary>
+        </member>
         <member name="T:ReadyM.Api.Multiplayer.Protocol.ServerEventHeader">
             <summary>
             Spans 3 bytes.
@@ -278,6 +413,65 @@
             - 1 byte for eventCode
             - 2 bytes for sender
             </summary>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Protocol.ServerEventHeader.TextDeserialize(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.Protocol.ServerEventHeader.TextSerialize(System.Text.Json.Utf8JsonWriter,ReadyM.Api.Multiplayer.Protocol.ServerEventHeader,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.RPC.RpcClassBase">
+            <summary>
+            Base class for an RPC container.
+            Each class that defines RPC methods with [RpcEvent] attributes must inherit from this class.
+            </summary>
+            <param name="client">RPC client to use for sending RPCs. This is injected by the DI container.</param>
+            <param name="serializer">Serializer to use for serializing RPC parameters. This is injected by the DI container.</param>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.RPC.RpcClassBase.#ctor(ReadyM.Api.Multiplayer.Client.IRpcClient,ReadyM.Api.Multiplayer.Serialization.IRelaySerializer)">
+            <summary>
+            Base class for an RPC container.
+            Each class that defines RPC methods with [RpcEvent] attributes must inherit from this class.
+            </summary>
+            <param name="client">RPC client to use for sending RPCs. This is injected by the DI container.</param>
+            <param name="serializer">Serializer to use for serializing RPC parameters. This is injected by the DI container.</param>
+        </member>
+        <member name="P:ReadyM.Api.Multiplayer.RPC.RpcClassBase.EventsCount">
+            <summary>
+            Number of RPC events defined in this class.
+            Generated by the source generator in derived classes.
+            </summary>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.RPC.RpcClassBase.InitRpc">
+            <summary>
+            Initializes the RPC class, e.g. by registering RPC handlers.
+            Generated by the source generator in derived classes.
+            </summary>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.RPC.RpcClassBase.DeInitRpc">
+            <summary>
+            De-initializes the RPC class, e.g. by unregistering RPC handlers.
+            Generated by the source generator in derived classes.
+            </summary>
+        </member>
+        <member name="P:ReadyM.Api.Multiplayer.RPC.RpcClassBase.Offset">
+            <summary>
+            Event code offset assigned to this RPC class.
+            Generated by the source generator in derived classes.
+            </summary>
+        </member>
+        <member name="P:ReadyM.Api.Multiplayer.RPC.RpcClassBase.RelayClient">
+            <summary>
+            RPC client to use for sending RPCs. This is injected by the DI container.
+            </summary>
+        </member>
+        <member name="P:ReadyM.Api.Multiplayer.RPC.RpcClassBase.Serializer">
+            <summary>
+            Serializer to use for serializing RPC parameters. This is injected by the DI container.
+            </summary>
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.RPC.RpcClassBase.Dispose">
+            <inheritdoc />
         </member>
         <member name="M:ReadyM.Api.Multiplayer.Serialization.RelaySerializer.SerializeObject(LiteNetLib.Utils.NetDataWriter,System.Object)">
             <summary>
@@ -293,6 +487,18 @@
             Deserializes the object from the stream.
             The data must be in the same format as serialized by SerializeObject.
             </summary>
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.ServerRpcEventAttribute">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.ServerRpcEventAttribute.#ctor(System.String)">
+            <exclude />
+        </member>
+        <member name="T:ReadyM.Api.Multiplayer.ServerRpcHandlerAttribute">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Api.Multiplayer.ServerRpcHandlerAttribute.#ctor(System.String)">
+            <exclude />
         </member>
     </members>
 </doc>

@@ -194,6 +194,63 @@
         <member name="T:WukongMp.Sdk.IReadyConvertable`2">
             <exclude />
         </member>
+        <member name="T:WukongMp.Sdk.ModBase">
+            <summary>
+            Base class for WukongMP SDK mods.
+            Each mod should have exactly one class extending from this, which will be instantiated by the mod loader.
+            </summary>
+        </member>
+        <member name="P:WukongMp.Sdk.ModBase.Name">
+            <summary>
+            Mod name.
+            This should be unique across all mods, as it's used for logging and patching.
+            </summary>
+        </member>
+        <member name="P:WukongMp.Sdk.ModBase.Version">
+            <summary>
+            Mod version.
+            This is for informational purposes and does not have to be unique.
+            In future versions of the SDK, this might be used for compatibility checks or update notifications.
+            </summary>
+        </member>
+        <member name="P:WukongMp.Sdk.ModBase.IsDebug">
+            <summary>
+            Indicates whether the mod is running in a debug build.
+            Can be used to enable debug-only features or logging.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.ModBase.Init">
+            <summary>
+            Called by the mod loader on game start.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.ModBase.LateInit">
+            <summary>
+            Called by the mod loader after all <c>Init</c> calls.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.ModBase.DeInit">
+            <summary>
+            Called by the mod loader on game closing.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.ModBase.SetLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Called by the mod loader.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.ModBase.GetReloadContext">
+            <summary>
+            Called by the mod loader.
+            Used in hot reload.
+            </summary>
+        </member>
+        <member name="M:WukongMp.Sdk.ModBase.Reload(System.Object)">
+            <summary>
+            Called by the mod loader.
+            Used in hot reload.
+            </summary>
+        </member>
         <member name="T:WukongMp.Sdk.ModSystemBase">
             Base class for plugin systems. Adds itself to the update loop on creation and removes itself on disposal.
         </member>
@@ -202,6 +259,21 @@
         </member>
         <member name="F:WukongMp.Sdk.ModSystemBase.UpdateTick.time">
             <summary> The time at the beginning of the current frame since application start. </summary>
+        </member>
+        <member name="T:WukongMp.Sdk.SaveFileType">
+            <summary>
+            Indicates the type of a save file.
+            </summary>
+        </member>
+        <member name="F:WukongMp.Sdk.SaveFileType.WorldSave">
+            <summary>
+            Indicates a world save file, which contains the state of the world.
+            </summary>
+        </member>
+        <member name="F:WukongMp.Sdk.SaveFileType.PlayerSave">
+            <summary>
+            Indicates a player save file, which contains the equipment, inventory, skills, and other data related to a player.
+            </summary>
         </member>
     </members>
 </doc>

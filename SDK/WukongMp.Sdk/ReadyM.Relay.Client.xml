@@ -16,6 +16,12 @@
             </summary>
             <param name="deltaTime">Time in seconds from the previous tick.</param>
         </member>
+        <member name="M:ReadyM.Relay.Client.Shim.ECS.ShimEcsDependencyData.TextDeserialize(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
+        <member name="M:ReadyM.Relay.Client.Shim.ECS.ShimEcsDependencyData.TextSerialize(System.Text.Json.Utf8JsonWriter,ReadyM.Relay.Client.Shim.ECS.ShimEcsDependencyData,System.Text.Json.JsonSerializerOptions)">
+            <exclude />
+        </member>
         <member name="T:ReadyM.Relay.Client.Utilities.NetworkSessionStats">
              <summary>
              All-time network session stats:
