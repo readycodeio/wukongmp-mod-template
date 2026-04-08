@@ -47,4 +47,10 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="manifest.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

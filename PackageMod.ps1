@@ -48,7 +48,13 @@ New-Item -ItemType Directory -Path $destRoot -Force | Out-Null
 # Copy each file from the build output that is in $modFiles to the output directory, preserving subdirectory structure
 $buildDir = Join-Path $scriptDir "$solutionName/bin/$Configuration/netstandard2.0"
 
-foreach ($file in $modFiles)
+$allFiles = $modFiles
+if ($Configuration -eq "Debug")
+{
+    $allFiles += $debugModFiles
+}
+
+foreach ($file in $allFiles)
 {
     $sourceFile = Join-Path -Path $buildDir -ChildPath $file
     $destFile = Join-Path -Path $destRoot -ChildPath $file
