@@ -8,38 +8,38 @@
 
     <ItemGroup>
         <Reference Include="0Harmony">
-            <HintPath>..\Core\0Harmony.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\0Harmony.dll</HintPath>
         </Reference>
         <Reference Include="LiteNetLib">
-          <HintPath>..\SDK\Overrides\LiteNetLib.dll</HintPath>
+          <HintPath>..\Dependencies\Loader\LiteNetLib.dll</HintPath>
         </Reference>
         <Reference Include="PreludeLib">
-            <HintPath>..\Core\PreludeLib.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\PreludeLib.dll</HintPath>
         </Reference>
         <Reference Include="ReadyM.Api">
-            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\ReadyM.Api.dll</HintPath>
         </Reference>
-        <Analyzer Include="..\SDK\WukongMp.Sdk\ReadyM.Api.Generators.dll" />
+        <Analyzer Include="..\Dependencies\SDK\ReadyM.Api.Generators.dll" />
         <Reference Include="ReadyM.Api.Multiplayer">
-            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Api.Multiplayer.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\ReadyM.Api.Multiplayer.dll</HintPath>
         </Reference>
         <Reference Include="ReadyM.Relay.Client">
-            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Relay.Client.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\ReadyM.Relay.Client.dll</HintPath>
         </Reference>
         <Reference Include="ReadyM.Wukong.Common">
-            <HintPath>..\SDK\WukongMp.Sdk\ReadyM.Wukong.Common.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\ReadyM.Wukong.Common.dll</HintPath>
         </Reference>
         <Reference Include="UnrealEngine">
-            <HintPath>..\Game\UnrealEngine.dll</HintPath>
+            <HintPath>..\Dependencies\Game\UnrealEngine.dll</HintPath>
         </Reference>
         <Reference Include="UnrealEngine.Runtime">
-            <HintPath>..\Game\UnrealEngine.Runtime.dll</HintPath>
+            <HintPath>..\Dependencies\Game\UnrealEngine.Runtime.dll</HintPath>
         </Reference>
         <Reference Include="WukongMp.Api">
-            <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Api.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\WukongMp.Api.dll</HintPath>
         </Reference>
         <Reference Include="WukongMp.Sdk">
-            <HintPath>..\SDK\WukongMp.Sdk\WukongMp.Sdk.dll</HintPath>
+            <HintPath>..\Dependencies\SDK\WukongMp.Sdk.dll</HintPath>
         </Reference>
     </ItemGroup>
 

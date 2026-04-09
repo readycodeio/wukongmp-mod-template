@@ -12,27 +12,24 @@ Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed in
 2. Open the solution in your preferred C# IDE (e.g., JetBrains Rider, Visual Studio).
 3. Build the solution to ensure that all dependencies are correctly resolved.
 4. Start developing your mod by modifying the `Main.cs` file and adding your own code.
-5. Reference any of the DLLs in `SDK`, `Core`, or `Game` as needed for your mod's functionality.
+5. Reference any of the DLLs in `Dependencies` as needed for your mod's functionality.
 
 ## Repository structure
 
 - `ExampleMod/Mod.cs`: The main entry point for your mod where you can initialize and set up your mod's functionality.
 - `ExampleMod/manifest.json`: The manifest file for your mod, containing metadata such as name, version, and description.
-- `SDK/WukongMp.Sdk`: WukongMP SDK files that you can reference in your mod development. The same files are present in the server binary package.
-- `SDK/Overrides`: Versions of DLLs present in the base **Black Myth: Wukong** game, which the SDK overrides to ensure compatibility with the modding framework. These files are also present in the server binary package.
-- `Core`: Our fork of the Harmony library, which is used for patching game code.
-- `Game`: Contains the game's original DLLs extracted from the base game.
+- `Dependencies`: WukongMP SDK and original game files that you can reference in your mod development. The same files are present in the server binary package.
 
 ## Packaging the mod
 
-1. Edit `ModFiles.ps1` to include all the necessary files for your mod.
-2. Run the `PackageMod.ps1` script with argument `Release` to create a `.zip` file containing your mod.
-3. The generated `.zip` file can be found in the `Output` directory.
-4. Upload the `.zip` file to your server's `mods/` directory to deploy your mod.
+1. Edit `ModFiles.ps1` to add any extra files your mod uses.
+2. Run the `MakeModFolder.ps1` script with argument `Release` to create a folder (default name: `ExampleMod`) that needs to be uploaded to the server.
+3. The generated folder can be found in the `Output` directory.
+4. Copy the built mod folder your server's `mods/` directory and restart the server.
 
 ## Debugging
 
-Use the `PackageMod.ps1` script with the `Debug` argument to create a debug version of your mod, which includes additional files for debugging purposes.
+Use the `MakeModFolder.ps1` script with the `Debug` argument to create a debug version of your mod, which includes additional files for debugging purposes.
 
 Before you can debug your mod, you need to enable the debugger in WukongMP.
 
