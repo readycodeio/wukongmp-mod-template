@@ -22,10 +22,11 @@ Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed in
 
 ## Packaging the mod
 
-1. Edit `ModFiles.ps1` to add any extra files your mod uses.
-2. Run the `MakeModFolder.ps1` script with argument `Release` to create a folder (default name: `ExampleMod`) that needs to be uploaded to the server.
-3. The generated folder can be found in the `Output` directory.
-4. Copy the built mod folder your server's `mods/` directory and restart the server.
+1. Make sure to edit `manifest.json` with the correct information for your mod, such as name, version, and description.
+2. Edit `ModFiles.ps1` to add any extra files your mod uses.
+3. Run the `MakeModFolder.ps1` script with argument `Release` to create a folder (default name: `ExampleMod`) that needs to be uploaded to the server.
+4. The generated folder can be found in the `Output` directory.
+5. Copy the built mod folder your server's `mods/` directory and restart the server.
 
 ## Debugging
 
