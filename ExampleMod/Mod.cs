@@ -16,8 +16,6 @@ public class Mod : ModBase
 {
     public override string Name => "Example Mod"; // TODO: CHANGE ME
 
-    public override string Version => "1.0.0";
-
     protected override void Initialize(IDependencyContainer services)
     {
         // register and resolve your services here, for example:
