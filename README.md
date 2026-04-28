@@ -1,5 +1,9 @@
 # WukongMP Mod Template
 
+![version](https://img.shields.io/badge/version-0.2.0-green)
+
+For other versions, check the list of [tags](https://github.com/readycodeio/wukongmp-mod-template/tags).
+
 <img src="https://flagcdn.com/cn.svg" width="18" alt="Chinese"/> [中文版](README.zh-Hans.md)
 
 A template project for developing a mod using the WukongMP SDK.

@@ -56,14 +56,26 @@
             Patches in this category are not enabled.
             </summary>
         </member>
-        <member name="T:WukongMp.Api.Configuration.TamerConstants">
+        <member name="T:WukongMp.Api.Configuration.TamerKind">
+            <summary>
+            Represents the type of a Tamer (monster).
+            </summary>
+            <param name="name">Must be a valid monster name.</param>
+        </member>
+        <member name="M:WukongMp.Api.Configuration.TamerKind.#ctor(System.String)">
+            <summary>
+            Represents the type of a Tamer (monster).
+            </summary>
+            <param name="name">Must be a valid monster name.</param>
+        </member>
+        <member name="T:WukongMp.Api.Configuration.TamerKinds">
             <summary>
             Defines constants for Tamer (monster) types.
             </summary>
         </member>
-        <member name="T:WukongMp.Api.Configuration.TamerKind">
+        <member name="M:WukongMp.Api.Configuration.UnitPathUtils.GetUnitPathName(WukongMp.Api.Configuration.TamerKind)">
             <summary>
-            Represents the type of a Tamer (monster).
+            Get the path to the unit blueprint for a given tamer kind. This is used for spawning units in the world.
             </summary>
         </member>
         <member name="M:WukongMp.Api.DTO.BroadcastUnitSpawnData.TextDeserialize(System.Text.Json.Utf8JsonReader@,System.Text.Json.JsonSerializerOptions)">

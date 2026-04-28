@@ -25,7 +25,7 @@ public class Mod : ModBase
         // use the WukongApi class to interact with the SDK, for example:
         WukongApi.Console.AddCommand("example_command", ConsoleCommand.Create(() =>
         {
-            WukongApi.Local.AddChatMessage("Example command executed!", FLinearColor.Orange);
+            WukongApi.Chat.ShowLocalMessage("Example command executed!", FLinearColor.Orange);
             rpc.SendExampleEvent("Hello from the example command!");
         }));
     }
@@ -37,6 +37,6 @@ public partial class ExampleRpc(IRpcClient client, IRelaySerializer serializer) 
     [RpcEvent(RelayMode.AreaOfInterestAll)]
     private void OnExampleEvent(PlayerId __sender, string message)
     {
-        WukongApi.Local.AddChatMessage($"Received message from {__sender}: {message}", FLinearColor.Green);
+        WukongApi.Chat.ShowLocalMessage($"Received message from {__sender}: {message}", FLinearColor.Green);
     }
 }

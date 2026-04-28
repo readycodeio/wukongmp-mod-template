@@ -1,6 +1,10 @@
 # WukongMP 模组模板
 
+![version](https://img.shields.io/badge/版本-0.2.0-green)
+
 <img src="https://flagcdn.com/gb.svg" width="18" alt="English"/> [English version](README.md)。
+
+对于其他版本，请查看[标签](https://github.com/readycodeio/wukongmp-mod-template/tags)列表。
 
 这是一个用于使用 WukongMP SDK 开发模组（Mod）的模板项目。
 
