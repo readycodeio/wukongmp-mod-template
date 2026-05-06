@@ -8,7 +8,10 @@
 
     <ItemGroup>
         <Reference Include="0Harmony">
-            <HintPath>..\Dependencies\SDK\0Harmony.dll</HintPath>
+            <HintPath>..\Dependencies\Loader\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="CSharpModBase">
+          <HintPath>..\Dependencies\Loader\CSharpModBase.dll</HintPath>
         </Reference>
         <Reference Include="LiteNetLib">
           <HintPath>..\Dependencies\Loader\LiteNetLib.dll</HintPath>
