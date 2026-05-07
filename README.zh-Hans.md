@@ -1,6 +1,6 @@
 # WukongMP 模组模板
 
-![version](https://img.shields.io/badge/版本-0.2.0-green)
+![version](https://img.shields.io/badge/版本-0.2.1-green)
 
 <img src="https://flagcdn.com/gb.svg" width="18" alt="English"/> [English version](README.md)。
 

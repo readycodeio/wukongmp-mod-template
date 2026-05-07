@@ -1,6 +1,6 @@
 # WukongMP Mod Template
 
-![version](https://img.shields.io/badge/version-0.2.0-green)
+![version](https://img.shields.io/badge/version-0.2.1-green)
 
 For other versions, check the list of [tags](https://github.com/readycodeio/wukongmp-mod-template/tags).
 
