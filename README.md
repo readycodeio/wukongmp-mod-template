@@ -10,6 +10,11 @@ A template project for developing a mod using the WukongMP SDK.
 
 Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed information on how to use the SDK and create your mod.
 
+## Requirements
+
+* [.NET 10.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) or later
+* If you are using Visual Studio, you need version 2026 or later
+
 ## Getting started
 
 1. Clone this repository to your local machine.

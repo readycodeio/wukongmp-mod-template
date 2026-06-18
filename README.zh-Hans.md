@@ -10,6 +10,11 @@
 
 有关如何使用 SDK 和创建模组的详细信息，请参阅 [WukongMP SDK 文档](https://docs.ready.mp)。
 
+## 系统要求
+
+* [.NET 10.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) 或更高版本
+* 如果您使用的是 Visual Studio，则需要 2026 或更高版本。
+
 ## 快速上手
 
 1. 克隆此仓库到您的本地机器。
