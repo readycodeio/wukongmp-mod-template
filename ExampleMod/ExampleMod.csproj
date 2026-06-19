@@ -14,6 +14,9 @@
         <Reference Include="0Harmony">
             <HintPath>..\Dependencies\Loader\0Harmony.dll</HintPath>
         </Reference>
+        <Reference Include="BtlSvr.Main">
+          <HintPath>..\Dependencies\Game\BtlSvr.Main.dll</HintPath>
+        </Reference>
         <Reference Include="CSharpModBase">
           <HintPath>..\Dependencies\Loader\CSharpModBase.dll</HintPath>
         </Reference>

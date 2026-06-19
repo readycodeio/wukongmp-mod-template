@@ -1,4 +1,5 @@
 ﻿using CSharpModBase.Input;
+using HarmonyLib;
 using ReadyM.Api.Command;
 using ReadyM.Api.DI;
 using ReadyM.Api.Idents;
@@ -13,7 +14,6 @@ using WukongMp.Api;
 using WukongMp.Api.Configuration;
 using WukongMp.Sdk;
 using WukongMp.Sdk.Api;
-using HarmonyLib;
 
 namespace ExampleMod;
 
