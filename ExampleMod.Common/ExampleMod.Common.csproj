@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>14</LangVersion>
+        <OutputType>Library</OutputType>
+        <Platforms>AnyCPU</Platforms>
+        <Configurations>Debug;Release</Configurations>
+    </PropertyGroup>
+
+    <!--
+        Targets netstandard2.0 so both the client mod (netstandard2.0) and the
+        server mod (net10.0) can reference this assembly.
+
+        Private=false keeps the netstandard2.0 SDK assemblies out of the server
+        mod's output folder, where the net10.0 builds from Dependencies/ServerSDK
+        have to win.
+    -->
+    <ItemGroup>
+        <Reference Include="ReadyM.Api" Private="false">
+            <HintPath>..\Dependencies\SDK\ReadyM.Api.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Api.Multiplayer" Private="false">
+            <HintPath>..\Dependencies\SDK\ReadyM.Api.Multiplayer.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Wukong.Common" Private="false">
+            <HintPath>..\Dependencies\SDK\ReadyM.Wukong.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="Friflo.Engine.ECS" Private="false">
+            <HintPath>..\Dependencies\SDK\Friflo.Engine.ECS.dll</HintPath>
+        </Reference>
+        <Reference Include="LiteNetLib" Private="false">
+            <HintPath>..\Dependencies\Loader\LiteNetLib.dll</HintPath>
+        </Reference>
+        <Analyzer Include="..\Dependencies\SDK\ReadyM.Api.Generators.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" PrivateAssets="all" />
+    </ItemGroup>
+
+</Project>

@@ -1,6 +1,6 @@
 # WukongMP 模组模板
 
-![version](https://img.shields.io/badge/版本-0.2.1-green)
+![version](https://img.shields.io/badge/版本-0.3.0-green)
 
 <img src="https://flagcdn.com/gb.svg" width="18" alt="English"/> [English version](README.md)。
 
@@ -20,22 +20,39 @@
 1. 克隆此仓库到您的本地机器。
 2. 在您偏好的 C# IDE（例如 JetBrains Rider、Visual Studio）中打开解决方案（Solution）。
 3. 构建（Build）解决方案，以确保所有依赖项（Dependencies）都已正确解析。
-4. 通过修改 `Main.cs` 文件并添加您自己的代码，开始开发您的模组。
+4. 通过修改 `ExampleMod/Mod.cs` 和 `ExampleMod.Serverside/Mod.cs` 文件并添加您自己的代码，开始开发您的模组。
 5. 根据模组功能的需要，引用 `Dependencies` 中的任何 DLL 文件。
 
 ## 仓库结构
 
-- `ExampleMod/Mod.cs`: 模组的主要入口点，您可以在此处初始化和设置模组的功能。
-- `ExampleMod/manifest.json`: 模组的清单文件，包含名称、版本和描述等元数据。
+一个完整的模组由三个项目组成：共享代码、在游戏内运行的客户端模组，以及在中继服务器内运行的服务端模组。共享项目是另外两个项目的依赖项。
+
+- `ExampleMod.Common`: 双方必须保持一致的类型，最重要的是 RPC 契约（Contracts）。目标框架为 `netstandard2.0`，因此客户端模组和服务端模组都可以引用它。
+- `ExampleMod`: 客户端模组，由游戏加载。目标框架为 `netstandard2.0`。
+  - `Mod.cs`: 入口点，您可以在此处初始化和设置模组的功能。
+  - `ExampleServerRpc.cs`: 共享 RPC 契约的客户端部分。
+  - `ExampleRpc.cs`: 客户端之间的事件，不涉及服务端模组。
+- `ExampleMod.Serverside`: 服务端模组，由中继服务器加载。目标框架为 `net10.0`。
+  - `Mod.cs`: 入口点，您可以在此处注册您的系统（Systems）和 RPC 处理程序。
+  - `RpcHandlers.cs`: 共享 RPC 契约的服务端部分。
+  - `ExampleStateSystem.cs`: 一个示例系统，由服务器逐帧调用。
+- `Content/manifest.json`: 客户端模组的清单文件，包含名称、版本和描述等元数据。服务端模组不需要清单文件。
 - `Dependencies`: WukongMP SDK 和原版游戏文件，供您在开发模组时引用。服务器二进制包中也包含相同的文件。
+  - `SDK`: `netstandard2.0` 版本的 SDK 构建，由共享项目和客户端项目引用。
+  - `ServerSDK`: `net10.0` 版本的 SDK 构建，由服务端项目引用。
+  - `Game`、`Loader`: 原版游戏和模组加载器程序集，仅用于客户端。
 
 ## 打包模组
 
 1. 请务必使用正确的模组信息（例如名称、版本和描述）编辑 `manifest.json` 文件。
 2. 编辑 `ModFiles.ps1` 以添加模组使用的任何额外文件。
-3. 运行带有 `Release` 参数的 `MakeModFolder.ps1` 脚本，以创建一个需要上传到服务器的文件夹（默认名称：`ExampleMod`）。
-4. 生成的文件夹可以在 `Output` 目录中找到。
-5. 将构建好的模组文件夹复制到服务器的 `mods/` 目录并重启服务器。
+3. 运行带有 `Release` 参数的 `MakeModFolder.ps1` 脚本。该脚本会构建全部三个项目并完成打包。
+4. 结果可以在 `Output` 目录中找到：
+   - `Output/mods/ExampleMod`: 客户端模组文件夹。
+   - `Output/server_mods`: 服务端模组文件。
+5. 将客户端模组文件夹复制到服务器的 `mods/` 目录。
+6. 将 `server_mods` 中的*文件内容*复制到服务器的 `server_mods/` 目录。服务端模组没有各自独立的文件夹，所有服务端模组的文件都并列存放在该目录中。
+7. 重启服务器。
 
 ## 调试
 

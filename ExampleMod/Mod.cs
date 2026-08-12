@@ -1,17 +1,10 @@
 ﻿using CSharpModBase.Input;
-using HarmonyLib;
+using ExampleMod.Common;
 using ReadyM.Api.Command;
 using ReadyM.Api.DI;
-using ReadyM.Api.Idents;
-using ReadyM.Api.Multiplayer.Client;
-using ReadyM.Api.Multiplayer.Generators;
-using ReadyM.Api.Multiplayer.Protocol.Enums;
-using ReadyM.Api.Multiplayer.RPC;
-using ReadyM.Api.Multiplayer.Serialization;
-using UnrealEngine.Engine;
+using ReadyM.Api.ECS.Registry;
 using UnrealEngine.Runtime;
 using WukongMp.Api;
-using WukongMp.Api.Configuration;
 using WukongMp.Sdk;
 using WukongMp.Sdk.Api;
 
@@ -25,13 +18,28 @@ public class Mod : ModBase
     {
         // register and resolve your services here, for example:
         services.RegisterSingleton<ExampleRpc>();
-        var rpc = services.Resolve<ExampleRpc>();
+        services.RegisterSingleton<ExampleServerRpc>();
+
+        // register custom components and attach them to archetypes, for example:
+        services.RegisterSingleton<IArchetypeRegistration, ExampleComponentRegistration>();
+        services.Resolve<IComponentApi>().RegisterComponent<ExampleComponent>();
+    }
+
+    public override void LateInit()
+    {
+        var rpc = WukongApi.Services.Resolve<ExampleRpc>();
+        var serverRpc = WukongApi.Services.Resolve<ExampleServerRpc>();
 
         // use the WukongApi class to interact with the SDK, for example:
         WukongApi.Console.AddCommand("example_command", ConsoleCommand.Create(() =>
         {
             WukongApi.Chat.ShowLocalMessage("Example command executed!", FLinearColor.Orange);
+        
+            // send an event to the other players
             rpc.SendExampleEvent("Hello from the example command!");
+        
+            // ask the server mod something; the answer arrives in ExampleServerRpc
+            serverRpc.SendRequestPlayerCount();
         }));
 
         // register input bindings, for example:
@@ -39,23 +47,4 @@ public class Mod : ModBase
     }
 }
 
-// define your RPC methods, for example:
-public partial class ExampleRpc(IRpcClient client, IRelaySerializer serializer) : RpcClassBase(client, serializer)
-{
-    [RpcEvent(RelayMode.AreaOfInterestAll)]
-    private void OnExampleEvent(PlayerId __sender, string message)
-    {
-        WukongApi.Chat.ShowLocalMessage($"Received message from {__sender}: {message}", FLinearColor.Green);
-    }
-}
-
 // use Harmony to patch a game method, for example:
-[HarmonyPatch(typeof(UGameplayStatics), nameof(UGameplayStatics.OpenLevel))]
-[HarmonyPatchCategory(PatchCategory.Global)]
-public static class ExamplePatch
-{
-    public static void Postfix(FName LevelName)
-    {
-        Logging.LogDebug("Entering level: {LevelName}", LevelName.ToString());
-    }
-}

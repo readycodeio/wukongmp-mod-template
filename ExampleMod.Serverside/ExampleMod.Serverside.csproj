@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>14</LangVersion>
+        <OutputType>Library</OutputType>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <Platforms>AnyCPU</Platforms>
+        <Configurations>Debug;Release</Configurations>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ExampleMod.Common\ExampleMod.Common.csproj" />
+    </ItemGroup>
+
+    <!--
+        Server mods run inside the relay server on net10.0, so they reference the
+        net10.0 SDK builds in Dependencies/ServerSDK, not the netstandard2.0 ones
+        the client mod uses.
+    -->
+    <ItemGroup>
+        <Reference Include="ReadyM.Api">
+            <HintPath>..\Dependencies\ServerSDK\ReadyM.Api.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Api.Multiplayer">
+            <HintPath>..\Dependencies\ServerSDK\ReadyM.Api.Multiplayer.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Relay.Server.Sdk">
+            <HintPath>..\Dependencies\ServerSDK\ReadyM.Relay.Server.Sdk.dll</HintPath>
+        </Reference>
+        <Reference Include="ReadyM.Wukong.Common">
+            <HintPath>..\Dependencies\ServerSDK\ReadyM.Wukong.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="WukongMp.Sdk.Serverside">
+            <HintPath>..\Dependencies\ServerSDK\WukongMp.Sdk.Serverside.dll</HintPath>
+        </Reference>
+        <Reference Include="Friflo.Engine.ECS">
+            <HintPath>..\Dependencies\ServerSDK\Friflo.Engine.ECS.dll</HintPath>
+        </Reference>
+        <Reference Include="Friflo.Engine.ECS.Boost">
+            <HintPath>..\Dependencies\ServerSDK\Friflo.Engine.ECS.Boost.dll</HintPath>
+        </Reference>
+        <Reference Include="LiteNetLib">
+            <HintPath>..\Dependencies\ServerSDK\LiteNetLib.dll</HintPath>
+        </Reference>
+        <Reference Include="Yooni.Native.Container">
+            <HintPath>..\Dependencies\ServerSDK\Yooni.Native.Container.dll</HintPath>
+        </Reference>
+        <Reference Include="Yooni.Native.LowLevel">
+            <HintPath>..\Dependencies\ServerSDK\Yooni.Native.LowLevel.dll</HintPath>
+        </Reference>
+        <Reference Include="Yooni.Native.Serialization">
+            <HintPath>..\Dependencies\ServerSDK\Yooni.Native.Serialization.dll</HintPath>
+        </Reference>
+        <Analyzer Include="..\Dependencies\ServerSDK\ReadyM.Api.Generators.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
+    </ItemGroup>
+
+</Project>

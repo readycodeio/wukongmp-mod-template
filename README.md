@@ -1,6 +1,6 @@
 # WukongMP Mod Template
 
-![version](https://img.shields.io/badge/version-0.2.1-green)
+![version](https://img.shields.io/badge/version-0.3.0-green)
 
 For other versions, check the list of [tags](https://github.com/readycodeio/wukongmp-mod-template/tags).
 
@@ -20,22 +20,39 @@ Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed in
 1. Clone this repository to your local machine.
 2. Open the solution in your preferred C# IDE (e.g., JetBrains Rider, Visual Studio).
 3. Build the solution to ensure that all dependencies are correctly resolved.
-4. Start developing your mod by modifying the `Main.cs` file and adding your own code.
+4. Start developing your mod by modifying `ExampleMod/Mod.cs` and `ExampleMod.Serverside/Mod.cs` and adding your own code.
 5. Reference any of the DLLs in `Dependencies` as needed for your mod's functionality.
 
 ## Repository structure
 
-- `ExampleMod/Mod.cs`: The main entry point for your mod where you can initialize and set up your mod's functionality.
-- `ExampleMod/manifest.json`: The manifest file for your mod, containing metadata such as name, version, and description.
+A fully fledged mod is three projects: shared code, the client mod that runs inside the game, and the server mod that runs inside the relay server. The shared project is a dependency of the other two.
+
+- `ExampleMod.Common`: Types both sides have to agree on, most importantly the RPC contracts. Targets `netstandard2.0` so the client mod and the server mod can both reference it.
+- `ExampleMod`: The client mod, loaded by the game. Targets `netstandard2.0`.
+  - `Mod.cs`: The entry point where you initialize and set up your mod's functionality.
+  - `ExampleServerRpc.cs`: The client half of the shared RPC contracts.
+  - `ExampleRpc.cs`: Client to client events, which do not involve the server mod.
+- `ExampleMod.Serverside`: The server mod, loaded by the relay server. Targets `net10.0`.
+  - `Mod.cs`: The entry point, where you register your systems and RPC handlers.
+  - `RpcHandlers.cs`: The server half of the shared RPC contracts.
+  - `ExampleStateSystem.cs`: An example system, ticked by the server.
+- `Content/manifest.json`: The manifest file for your client mod, containing metadata such as name, version, and description. Server mods need no manifest.
 - `Dependencies`: WukongMP SDK and original game files that you can reference in your mod development. The same files are present in the server binary package.
+  - `SDK`: The `netstandard2.0` SDK builds, referenced by the shared and client projects.
+  - `ServerSDK`: The `net10.0` SDK builds, referenced by the server project.
+  - `Game`, `Loader`: Original game and mod loader assemblies, client side only.
 
 ## Packaging the mod
 
 1. Make sure to edit `manifest.json` with the correct information for your mod, such as name, version, and description.
 2. Edit `ModFiles.ps1` to add any extra files your mod uses.
-3. Run the `MakeModFolder.ps1` script with argument `Release` to create a folder (default name: `ExampleMod`) that needs to be uploaded to the server.
-4. The generated folder can be found in the `Output` directory.
-5. Copy the built mod folder your server's `mods/` directory and restart the server.
+3. Run the `MakeModFolder.ps1` script with argument `Release`. It builds all three projects and packages them.
+4. The results can be found in the `Output` directory:
+   - `Output/mods/ExampleMod`: the client mod folder.
+   - `Output/server_mods`: the server mod files.
+5. Copy the client mod folder into your server's `mods/` directory.
+6. Copy the *contents* of `server_mods` into your server's `server_mods/` directory. Server mods do not get a folder of their own, every server mod's files sit next to each other in there.
+7. Restart the server.
 
 ## Debugging
 
