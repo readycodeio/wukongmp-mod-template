@@ -21,7 +21,7 @@
         <Reference Include="Friflo.Engine.ECS">
             <HintPath>..\Dependencies\SDK\Friflo.Engine.ECS.dll</HintPath>
         </Reference>
-        <Reference Include="BtlSvr.Main">
+        <Reference Include="BtlSvr.Main" Private="false">
           <HintPath>..\Dependencies\Game\BtlSvr.Main.dll</HintPath>
         </Reference>
         <Reference Include="CSharpModBase">
@@ -46,10 +46,10 @@
         <Reference Include="ReadyM.Wukong.Common">
             <HintPath>..\Dependencies\SDK\ReadyM.Wukong.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UnrealEngine">
+        <Reference Include="UnrealEngine" Private="false">
             <HintPath>..\Dependencies\Game\UnrealEngine.dll</HintPath>
         </Reference>
-        <Reference Include="UnrealEngine.Runtime">
+        <Reference Include="UnrealEngine.Runtime" Private="false">
             <HintPath>..\Dependencies\Game\UnrealEngine.Runtime.dll</HintPath>
         </Reference>
         <Reference Include="WukongMp.Api">
