@@ -21,9 +21,6 @@
         <Reference Include="Friflo.Engine.ECS">
             <HintPath>..\Dependencies\SDK\Friflo.Engine.ECS.dll</HintPath>
         </Reference>
-        <Reference Include="BtlSvr.Main" Private="false">
-          <HintPath>..\Dependencies\Game\BtlSvr.Main.dll</HintPath>
-        </Reference>
         <Reference Include="CSharpModBase">
           <HintPath>..\Dependencies\Loader\CSharpModBase.dll</HintPath>
         </Reference>
@@ -46,12 +43,6 @@
         <Reference Include="ReadyM.Wukong.Common">
             <HintPath>..\Dependencies\SDK\ReadyM.Wukong.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UnrealEngine" Private="false">
-            <HintPath>..\Dependencies\Game\UnrealEngine.dll</HintPath>
-        </Reference>
-        <Reference Include="UnrealEngine.Runtime" Private="false">
-            <HintPath>..\Dependencies\Game\UnrealEngine.Runtime.dll</HintPath>
-        </Reference>
         <Reference Include="WukongMp.Api">
             <HintPath>..\Dependencies\SDK\WukongMp.Api.dll</HintPath>
         </Reference>
@@ -64,4 +55,10 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
     </ItemGroup>
 
+
+    <ItemGroup>
+        <!-- Reference-only assemblies for the game. Compile-time only, the real
+             assemblies are already loaded in the game process at runtime. -->
+        <PackageReference Include="ReadyM.Wukong.GameRefs" Version="1.0.21.23831-preview.1" />
+    </ItemGroup>
 </Project>

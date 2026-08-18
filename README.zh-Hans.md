@@ -37,10 +37,18 @@
   - `RpcHandlers.cs`: 共享 RPC 契约的服务端部分。
   - `ExampleStateSystem.cs`: 一个示例系统，由服务器逐帧调用。
 - `Content/manifest.json`: 客户端模组的清单文件，包含名称、版本和描述等元数据。服务端模组不需要清单文件。
-- `Dependencies`: WukongMP SDK 和原版游戏文件，供您在开发模组时引用。服务器二进制包中也包含相同的文件。
+- `Dependencies`: WukongMP SDK 程序集，供您在开发模组时引用。服务器二进制包中也包含相同的文件。
   - `SDK`: `netstandard2.0` 版本的 SDK 构建，由共享项目和客户端项目引用。
   - `ServerSDK`: `net10.0` 版本的 SDK 构建，由服务端项目引用。
-  - `Game`、`Loader`: 原版游戏和模组加载器程序集，仅用于客户端。
+  - `Loader`: 模组加载器程序集，仅用于客户端。
+
+游戏本体的程序集来自 [`ReadyM.Wukong.GameRefs`](https://github.com/readycodeio/wukong-game-refs)
+NuGet 包，由客户端项目引用。这些是「仅引用」程序集：只包含 API 签名，不含方法实现，
+仅在编译时使用。游戏运行时进程中已加载真实程序集，因此无需随模组一起分发。
+
+需要注意：使用这些「仅引用」程序集时，您无法单步调试游戏代码，也无法在游戏之外执行游戏代码。
+如有需要，请移除 `ReadyM.Wukong.GameRefs` 包引用，改为添加指向您自己游戏安装中完整程序集的
+`<Reference>` 项。两种方式的编译结果完全相同。
 
 ## 打包模组
 
