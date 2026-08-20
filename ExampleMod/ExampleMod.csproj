@@ -21,6 +21,6 @@
 
 
     <ItemGroup>
-        <PackageReference Include="ReadyM.SDK.Wukong.Client" Version="0.3.1" />
+        <PackageReference Include="ReadyM.SDK.Wukong.Client" Version="0.3.1-preview.1" />
     </ItemGroup>
 </Project>
