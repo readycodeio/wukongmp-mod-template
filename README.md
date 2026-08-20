@@ -1,6 +1,6 @@
 # WukongMP Mod Template
 
-![version](https://img.shields.io/badge/version-0.3.0-green)
+![version](https://img.shields.io/badge/version-0.3.1-green)
 
 For other versions, check the list of [tags](https://github.com/readycodeio/wukongmp-mod-template/tags).
 
@@ -21,7 +21,7 @@ Refer to the [WukongMP SDK documentation](https://docs.ready.mp) for detailed in
 2. Open the solution in your preferred C# IDE (e.g., JetBrains Rider, Visual Studio).
 3. Build the solution to ensure that all dependencies are correctly resolved.
 4. Start developing your mod by modifying `ExampleMod/Mod.cs` and `ExampleMod.Serverside/Mod.cs` and adding your own code.
-5. Reference any of the DLLs in `Dependencies` as needed for your mod's functionality.
+5. The SDK arrives as NuGet packages, one per project. There is nothing to reference by hand.
 
 ## Repository structure
 
@@ -37,10 +37,30 @@ A fully fledged mod is three projects: shared code, the client mod that runs ins
   - `RpcHandlers.cs`: The server half of the shared RPC contracts.
   - `ExampleStateSystem.cs`: An example system, ticked by the server.
 - `Content/manifest.json`: The manifest file for your client mod, containing metadata such as name, version, and description. Server mods need no manifest.
-- `Dependencies`: WukongMP SDK and original game files that you can reference in your mod development. The same files are present in the server binary package.
-  - `SDK`: The `netstandard2.0` SDK builds, referenced by the shared and client projects.
-  - `ServerSDK`: The `net10.0` SDK builds, referenced by the server project.
-  - `Game`, `Loader`: Original game and mod loader assemblies, client side only.
+
+## The SDK packages
+
+The SDK comes as three NuGet packages, one per project, so a project only sees the
+assemblies that exist in the process it runs in.
+
+- `ReadyM.SDK.Wukong.Common`: shared types and the source generator. Referenced by `ExampleMod.Common`.
+- `ReadyM.SDK.Wukong.Client`: the client SDK and the mod loader assemblies. Referenced by `ExampleMod`.
+- `ReadyM.SDK.Wukong.Server`: the server SDK. Referenced by `ExampleMod.Serverside`.
+
+Client and Server both depend on Common and neither depends on the other. That is what
+stops shared code from reaching into client-only API and then failing when the server
+loads it.
+
+The game's own assemblies come from the [`ReadyM.Wukong.GameRefs`](https://github.com/readycodeio/wukong-game-refs)
+NuGet package, which the client project references. Those are reference-only assemblies:
+API surface with no method bodies, used at compile time only. The real assemblies are
+already loaded in the game process at runtime, so nothing needs shipping with your mod.
+
+One consequence worth knowing: you cannot step into game code, or run game code outside
+the game, against reference-only assemblies. If you need either, remove the
+`ReadyM.Wukong.GameRefs` package reference and add `<Reference>` items pointing at a full
+set of assemblies extracted from your own installation instead. The compile succeeds
+identically either way.
 
 ## Packaging the mod
 

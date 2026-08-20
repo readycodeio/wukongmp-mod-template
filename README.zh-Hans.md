@@ -1,6 +1,6 @@
 # WukongMP 模组模板
 
-![version](https://img.shields.io/badge/版本-0.3.0-green)
+![version](https://img.shields.io/badge/版本-0.3.1-green)
 
 <img src="https://flagcdn.com/gb.svg" width="18" alt="English"/> [English version](README.md)。
 
@@ -21,7 +21,7 @@
 2. 在您偏好的 C# IDE（例如 JetBrains Rider、Visual Studio）中打开解决方案（Solution）。
 3. 构建（Build）解决方案，以确保所有依赖项（Dependencies）都已正确解析。
 4. 通过修改 `ExampleMod/Mod.cs` 和 `ExampleMod.Serverside/Mod.cs` 文件并添加您自己的代码，开始开发您的模组。
-5. 根据模组功能的需要，引用 `Dependencies` 中的任何 DLL 文件。
+5. SDK 以 NuGet 包的形式提供，每个项目各引用一个，无需手动引用 DLL 文件。
 
 ## 仓库结构
 
@@ -37,10 +37,25 @@
   - `RpcHandlers.cs`: 共享 RPC 契约的服务端部分。
   - `ExampleStateSystem.cs`: 一个示例系统，由服务器逐帧调用。
 - `Content/manifest.json`: 客户端模组的清单文件，包含名称、版本和描述等元数据。服务端模组不需要清单文件。
-- `Dependencies`: WukongMP SDK 和原版游戏文件，供您在开发模组时引用。服务器二进制包中也包含相同的文件。
-  - `SDK`: `netstandard2.0` 版本的 SDK 构建，由共享项目和客户端项目引用。
-  - `ServerSDK`: `net10.0` 版本的 SDK 构建，由服务端项目引用。
-  - `Game`、`Loader`: 原版游戏和模组加载器程序集，仅用于客户端。
+
+## SDK 包
+
+SDK 由三个 NuGet 包提供，每个项目对应一个，因此每个项目只能看到其运行进程中实际存在的程序集。
+
+- `ReadyM.SDK.Wukong.Common`: 共享类型与源生成器，由 `ExampleMod.Common` 引用。
+- `ReadyM.SDK.Wukong.Client`: 客户端 SDK 与模组加载器程序集，由 `ExampleMod` 引用。
+- `ReadyM.SDK.Wukong.Server`: 服务端 SDK，由 `ExampleMod.Serverside` 引用。
+
+Client 与 Server 都依赖 Common，且互不依赖。这样共享代码就无法引用仅限客户端的 API，
+避免了服务端加载时才暴露的错误。
+
+游戏本体的程序集来自 [`ReadyM.Wukong.GameRefs`](https://github.com/readycodeio/wukong-game-refs)
+NuGet 包，由客户端项目引用。这些是「仅引用」程序集：只包含 API 签名，不含方法实现，
+仅在编译时使用。游戏运行时进程中已加载真实程序集，因此无需随模组一起分发。
+
+需要注意：使用这些「仅引用」程序集时，您无法单步调试游戏代码，也无法在游戏之外执行游戏代码。
+如有需要，请移除 `ReadyM.Wukong.GameRefs` 包引用，改为添加指向您自己游戏安装中完整程序集的
+`<Reference>` 项。两种方式的编译结果完全相同。
 
 ## 打包模组
 

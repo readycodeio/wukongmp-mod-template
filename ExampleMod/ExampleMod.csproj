@@ -14,54 +14,13 @@
         <ProjectReference Include="..\ExampleMod.Common\ExampleMod.Common.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Reference Include="0Harmony">
-            <HintPath>..\Dependencies\Loader\0Harmony.dll</HintPath>
-        </Reference>
-        <Reference Include="Friflo.Engine.ECS">
-            <HintPath>..\Dependencies\SDK\Friflo.Engine.ECS.dll</HintPath>
-        </Reference>
-        <Reference Include="BtlSvr.Main">
-          <HintPath>..\Dependencies\Game\BtlSvr.Main.dll</HintPath>
-        </Reference>
-        <Reference Include="CSharpModBase">
-          <HintPath>..\Dependencies\Loader\CSharpModBase.dll</HintPath>
-        </Reference>
-        <Reference Include="LiteNetLib">
-          <HintPath>..\Dependencies\Loader\LiteNetLib.dll</HintPath>
-        </Reference>
-        <Reference Include="PreludeLib">
-            <HintPath>..\Dependencies\Loader\PreludeLib.dll</HintPath>
-        </Reference>
-        <Reference Include="ReadyM.Api">
-            <HintPath>..\Dependencies\SDK\ReadyM.Api.dll</HintPath>
-        </Reference>
-        <Analyzer Include="..\Dependencies\SDK\ReadyM.Api.Generators.dll" />
-        <Reference Include="ReadyM.Api.Multiplayer">
-            <HintPath>..\Dependencies\SDK\ReadyM.Api.Multiplayer.dll</HintPath>
-        </Reference>
-        <Reference Include="ReadyM.Relay.Client">
-            <HintPath>..\Dependencies\SDK\ReadyM.Relay.Client.dll</HintPath>
-        </Reference>
-        <Reference Include="ReadyM.Wukong.Common">
-            <HintPath>..\Dependencies\SDK\ReadyM.Wukong.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="UnrealEngine">
-            <HintPath>..\Dependencies\Game\UnrealEngine.dll</HintPath>
-        </Reference>
-        <Reference Include="UnrealEngine.Runtime">
-            <HintPath>..\Dependencies\Game\UnrealEngine.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="WukongMp.Api">
-            <HintPath>..\Dependencies\SDK\WukongMp.Api.dll</HintPath>
-        </Reference>
-        <Reference Include="WukongMp.Sdk">
-            <HintPath>..\Dependencies\SDK\WukongMp.Sdk.dll</HintPath>
-        </Reference>
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
     </ItemGroup>
 
+
+    <ItemGroup>
+        <PackageReference Include="ReadyM.SDK.Wukong.Client" Version="0.3.1" />
+    </ItemGroup>
 </Project>
