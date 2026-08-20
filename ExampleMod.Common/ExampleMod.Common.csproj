@@ -17,27 +17,12 @@
         mod's output folder, where the net10.0 builds from Dependencies/ServerSDK
         have to win.
     -->
-    <ItemGroup>
-        <Reference Include="ReadyM.Api" Private="false">
-            <HintPath>..\Dependencies\SDK\ReadyM.Api.dll</HintPath>
-        </Reference>
-        <Reference Include="ReadyM.Api.Multiplayer" Private="false">
-            <HintPath>..\Dependencies\SDK\ReadyM.Api.Multiplayer.dll</HintPath>
-        </Reference>
-        <Reference Include="ReadyM.Wukong.Common" Private="false">
-            <HintPath>..\Dependencies\SDK\ReadyM.Wukong.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="Friflo.Engine.ECS" Private="false">
-            <HintPath>..\Dependencies\SDK\Friflo.Engine.ECS.dll</HintPath>
-        </Reference>
-        <Reference Include="LiteNetLib" Private="false">
-            <HintPath>..\Dependencies\Loader\LiteNetLib.dll</HintPath>
-        </Reference>
-        <Analyzer Include="..\Dependencies\SDK\ReadyM.Api.Generators.dll" />
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" PrivateAssets="all" />
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="ReadyM.SDK.Wukong.Common" Version="0.3.1" />
+    </ItemGroup>
 </Project>
