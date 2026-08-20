@@ -23,6 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ReadyM.SDK.Wukong.Common" Version="0.3.1-preview.1" />
+        <PackageReference Include="ReadyM.SDK.Wukong.Common" Version="0.3.1" />
     </ItemGroup>
 </Project>
