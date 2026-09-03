@@ -4,10 +4,11 @@
   "name": "CHANGE ME",
   "author": "CHANGE ME",
   "description": "CHANGE ME",
+  "link": "CHANGE ME",
   "dependencies": [
     {
-      "uniqueId": "WukongMp.Sdk",
-      "minimumVersion": "0.3.1"
+      "uniqueId": "WukongMP.SDK",
+      "minimumVersion": "0.4.0"
     }
   ]
 }

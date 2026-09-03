@@ -1,6 +1,6 @@
 # WukongMP Mod Template
 
-![version](https://img.shields.io/badge/version-0.3.1-green)
+![version](https://img.shields.io/badge/version-0.4.0-green)
 
 For other versions, check the list of [tags](https://github.com/readycodeio/wukongmp-mod-template/tags).
 
@@ -67,12 +67,16 @@ identically either way.
 1. Make sure to edit `manifest.json` with the correct information for your mod, such as name, version, and description.
 2. Edit `ModFiles.ps1` to add any extra files your mod uses.
 3. Run the `MakeModFolder.ps1` script with argument `Release`. It builds all three projects and packages them.
-4. The results can be found in the `Output` directory:
-   - `Output/mods/ExampleMod`: the client mod folder.
-   - `Output/server_mods`: the server mod files.
-5. Copy the client mod folder into your server's `mods/` directory.
-6. Copy the *contents* of `server_mods` into your server's `server_mods/` directory. Server mods do not get a folder of their own, every server mod's files sit next to each other in there.
-7. Restart the server.
+4. The result is one mod folder in the `Output` directory:
+   - `Output/mods/ExampleMod/manifest.json`: read by both sides.
+   - `Output/mods/ExampleMod/client`: sent to players when they join.
+   - `Output/mods/ExampleMod/server`: loaded by the server only.
+5. Copy the whole `Output/mods/ExampleMod` folder into your server's `mods/` directory.
+6. Restart the server.
+
+The server serves the `client` folder to players and keeps `server` to itself, so you install one
+folder and both sides get what they need. Anything you would not hand a player, such as a config
+file with server-only settings, belongs in `server` and nowhere else.
 
 ## Debugging
 
