@@ -1,6 +1,6 @@
 # WukongMP 模组模板
 
-![version](https://img.shields.io/badge/版本-0.3.1-green)
+![version](https://img.shields.io/badge/版本-0.4.0-green)
 
 <img src="https://flagcdn.com/gb.svg" width="18" alt="English"/> [English version](README.md)。
 
@@ -62,12 +62,15 @@ NuGet 包，由客户端项目引用。这些是「仅引用」程序集：只�
 1. 请务必使用正确的模组信息（例如名称、版本和描述）编辑 `manifest.json` 文件。
 2. 编辑 `ModFiles.ps1` 以添加模组使用的任何额外文件。
 3. 运行带有 `Release` 参数的 `MakeModFolder.ps1` 脚本。该脚本会构建全部三个项目并完成打包。
-4. 结果可以在 `Output` 目录中找到：
-   - `Output/mods/ExampleMod`: 客户端模组文件夹。
-   - `Output/server_mods`: 服务端模组文件。
-5. 将客户端模组文件夹复制到服务器的 `mods/` 目录。
-6. 将 `server_mods` 中的*文件内容*复制到服务器的 `server_mods/` 目录。服务端模组没有各自独立的文件夹，所有服务端模组的文件都并列存放在该目录中。
-7. 重启服务器。
+4. 结果是 `Output` 目录中的一个模组文件夹：
+   - `Output/mods/ExampleMod/manifest.json`: 客户端与服务端都会读取。
+   - `Output/mods/ExampleMod/client`: 玩家加入时下发给玩家。
+   - `Output/mods/ExampleMod/server`: 仅由服务器加载。
+5. 将整个 `Output/mods/ExampleMod` 文件夹复制到服务器的 `mods/` 目录。
+6. 重启服务器。
+
+服务器会把 `client` 文件夹下发给玩家，并将 `server` 文件夹保留在服务端，因此只需安装一个文件夹，
+两端便都能获得所需内容。任何不应交给玩家的内容，例如仅供服务端使用的配置文件，都只能放在 `server` 中。
 
 ## 调试
 

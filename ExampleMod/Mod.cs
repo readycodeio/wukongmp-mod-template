@@ -21,8 +21,14 @@ public class Mod : ModBase
         services.RegisterSingleton<ExampleServerRpc>();
 
         // register custom components and attach them to archetypes, for example:
-        services.RegisterSingleton<IArchetypeRegistration, ExampleComponentRegistration>();
         services.Resolve<IComponentApi>().RegisterComponent<ExampleComponent>();
+
+        // Attaches components to archetypes while the ECS schema is built. Archetype membership
+        // has to match the server mod, or the two sides disagree about what an entity holds.
+        RegisterArchetypes(registry =>
+        {
+            registry.ModifyArchetype(WukongApi.Archetypes.GlobalPlayerArchetype, b => b.Add<ExampleComponent>());
+        });
     }
 
     public override void LateInit()

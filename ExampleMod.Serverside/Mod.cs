@@ -1,4 +1,4 @@
-﻿using ExampleMod.Common;
+using ExampleMod.Common;
 using Microsoft.Extensions.Logging;
 using ReadyM.Api.ECS.Worlds;
 using ReadyM.Relay.Server.Sdk;
@@ -7,8 +7,8 @@ using WukongMp.Sdk.Serverside;
 
 namespace ExampleMod.Serverside;
 
-// The relay server scans every DLL in its server_mods folder and instantiates each
-// ServerModBase it finds, so nothing here needs a manifest.
+// The relay server reads the manifest at the mod folder root, then instantiates the ServerModBase
+// it finds in the server subfolder. Both sides share that one manifest.
 public class Mod : ServerModBase
 {
     protected override void RegisterComponents(IComponentRegistry registry)

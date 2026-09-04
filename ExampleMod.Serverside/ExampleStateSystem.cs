@@ -17,7 +17,7 @@ public class ExampleStateSystem(EcsApi ecs, RpcHandlers rpc, ILogger logger) : M
 
     protected override void OnUpdate(UpdateTick tick)
     {
-        _timer -= tick.deltaTime;
+        _timer -= tick.DeltaTime;
         if (_timer > 0f)
             return;
 
